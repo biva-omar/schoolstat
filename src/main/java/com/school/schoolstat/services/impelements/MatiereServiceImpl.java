@@ -18,6 +18,7 @@ public class MatiereServiceImpl implements MatierService {
 
     @Override
     public Matiere createMatiere(Matiere matiere) {
+        matiere.setId(null);
         return matiereRepository.save(matiere);
     }
 
@@ -39,5 +40,10 @@ public class MatiereServiceImpl implements MatierService {
     @Override
     public void deleteMatiere(Matiere matiere) {
         matiereRepository.delete(matiere);
+    }
+
+    @Override
+    public Long countMatiere() {
+        return matiereRepository.count();
     }
 }

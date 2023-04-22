@@ -19,6 +19,7 @@ public class SchoolServiceImpl implements SchoolService {
     @Override
     public School createSchool(School school)
     {
+        school.setId(null);
         return schoolRepository.save(school);
     }
 
@@ -40,5 +41,10 @@ public class SchoolServiceImpl implements SchoolService {
     @Override
     public void deleteSchool(School school) {
         schoolRepository.delete(school);
+    }
+
+    @Override
+    public Long countSchool() {
+        return schoolRepository.count();
     }
 }

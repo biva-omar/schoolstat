@@ -65,4 +65,10 @@ public class MatiereController {
                 "deleted successful"
         );
     }
+
+    @GetMapping("/count")
+    public ResponseEntity<?> count(){
+        Long total = matiereService.countMatiere();
+        return ResponseEntity.ok(total);
+    }
 }

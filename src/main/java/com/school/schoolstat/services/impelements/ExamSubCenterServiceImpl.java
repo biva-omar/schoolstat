@@ -18,6 +18,7 @@ public class ExamSubCenterServiceImpl implements ExamSubCenterService {
 
     @Override
     public ExamSubCenter createExamSubCenter(ExamSubCenter examSubCenter) {
+        examSubCenter.setId(null);
         return examSubCenterRepository.save(examSubCenter);
     }
 
@@ -39,5 +40,10 @@ public class ExamSubCenterServiceImpl implements ExamSubCenterService {
     @Override
     public void deleteExamSubCenter(ExamSubCenter examSubCenter) {
         examSubCenterRepository.delete(examSubCenter);
+    }
+
+    @Override
+    public Long count() {
+        return examSubCenterRepository.count();
     }
 }

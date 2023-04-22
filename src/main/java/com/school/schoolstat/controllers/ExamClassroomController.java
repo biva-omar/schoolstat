@@ -63,4 +63,10 @@ public class ExamClassroomController {
         examClassroomService.deleteExamClassroom(id);
         return ResponseEntity.ok("deleted successful");
     }
+
+    @GetMapping("/count")
+    public ResponseEntity<?> count(){
+        Long total = examClassroomService.countExamClassroom();
+        return ResponseEntity.ok(total);
+    }
 }

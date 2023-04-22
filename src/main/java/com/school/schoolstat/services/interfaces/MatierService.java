@@ -16,4 +16,5 @@ public interface MatierService {
 
     public void deleteMatiere(Matiere matiere);
 
+    Long countMatiere();
 }

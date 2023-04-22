@@ -65,4 +65,10 @@ public class SchoolController {
         schoolService.deleteSchool(id);
         return ResponseEntity.ok("deleted");
     }
+
+    @GetMapping("/count")
+    public ResponseEntity<?> count(){
+        Long total = schoolService.countSchool();
+        return ResponseEntity.ok(total);
+    }
 }

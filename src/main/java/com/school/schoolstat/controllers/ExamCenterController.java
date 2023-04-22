@@ -33,7 +33,7 @@ public class ExamCenterController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<?> retrieve(){
+    public ResponseEntity<?> retrieve() throws Exception {
         List<ExamCenter> examCenters = examCenterService.retrieveExamCenter();
 
         return ResponseEntity.ok(
@@ -44,7 +44,7 @@ public class ExamCenterController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> retrieve2(@PathVariable("id") ExamCenter examCenter){
+    public ResponseEntity<?> retrieve2(@PathVariable("id") ExamCenter examCenter) throws Exception{
         return ResponseEntity.ok(
                 modelMapper.map(examCenter, ExamCenterResponseDto.class)
         );

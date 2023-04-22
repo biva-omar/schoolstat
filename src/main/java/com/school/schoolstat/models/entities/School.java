@@ -17,11 +17,12 @@ public class School implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 127)
     private String label;
 
     private String teachingOrder;
 
     @ManyToOne
-    @JoinColumn(name = "exam_sub_center_id")
+    @JoinColumn(name = "exam_sub_center_id", nullable = false)
     private ExamSubCenter examSubCenter;
 }

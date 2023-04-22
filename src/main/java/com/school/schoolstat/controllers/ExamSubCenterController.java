@@ -61,4 +61,11 @@ public class ExamSubCenterController {
         examSubCenterService.deleteExamSubCenter(examSubCenter);
         return ResponseEntity.ok("deleted successful");
     }
+
+    @GetMapping("/count")
+    public ResponseEntity<?> count(){
+        Long total = examSubCenterService.count();
+        return ResponseEntity.ok(total);
+    }
+    
 }

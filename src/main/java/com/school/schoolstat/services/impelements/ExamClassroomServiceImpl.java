@@ -18,6 +18,7 @@ public class ExamClassroomServiceImpl implements ExamClassroomService {
 
     @Override
     public ExamClassroom createExamClassroom(ExamClassroom examClassroom) {
+        examClassroom.setId(null);
         return examClassroomRepository.save(examClassroom);
     }
 
@@ -39,5 +40,10 @@ public class ExamClassroomServiceImpl implements ExamClassroomService {
     @Override
     public void deleteExamClassroom(ExamClassroom examClassroom) {
         examClassroomRepository.delete(examClassroom);
+    }
+
+    @Override
+    public Long countExamClassroom() {
+        return examClassroomRepository.count();
     }
 }

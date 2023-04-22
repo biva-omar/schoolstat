@@ -18,4 +18,6 @@ public class Matiere implements Serializable {
     private Long id;
 
     private String label;
+
+    private int coefficient;
 }

@@ -1,6 +1,7 @@
 package com.school.schoolstat.models.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.io.Serializable;
@@ -17,6 +18,6 @@ public class ExamCenter implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 51, unique = true)
     private String label;
-
 }

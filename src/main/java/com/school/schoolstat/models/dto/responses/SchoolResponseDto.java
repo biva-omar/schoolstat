@@ -9,5 +9,5 @@ public class SchoolResponseDto implements Serializable {
     private Long id;
     private String label;
     private String teachingOrder;
-    private Long examSubCenterId;
+    private ExamSubCenterResponseDto examSubCenter;
 }

@@ -18,6 +18,7 @@ public class Student implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String firstname;
 
     private String lastname;
@@ -28,8 +29,10 @@ public class Student implements Serializable {
 
     private String tutorPhone;
 
+    private boolean isPresent = true;
+
     @ManyToOne
-    @JoinColumn(name = "school_id")
+    @JoinColumn(name = "school_id", nullable = false)
     private School school;
 
 }

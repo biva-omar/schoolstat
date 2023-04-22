@@ -17,10 +17,10 @@ public class ExamSubCenter implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 127, unique = true)
     private String label;
 
     @ManyToOne
-    @JoinColumn(name = "exam_center_id", nullable = true)
+    @JoinColumn(name = "exam_center_id", nullable = false)
     private ExamCenter examCenter;
 }

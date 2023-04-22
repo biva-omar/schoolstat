@@ -15,4 +15,6 @@ public interface ExamClassroomService {
     public ExamClassroom updateExamClassroom(ExamClassroom examClassroom);
 
     public void  deleteExamClassroom(ExamClassroom examClassroom);
+
+    Long countExamClassroom();
 }

@@ -15,4 +15,6 @@ public interface SchoolService {
     public School updateSchool(School school);
 
     public void deleteSchool(School school);
+
+    Long countSchool();
 }

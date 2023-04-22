@@ -21,6 +21,8 @@ public class Note implements Serializable {
 
     private String appreciation;
 
+    private float note;
+
     @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;

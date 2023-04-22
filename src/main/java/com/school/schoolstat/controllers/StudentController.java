@@ -1,6 +1,9 @@
 package com.school.schoolstat.controllers;
 
 import com.school.schoolstat.models.dto.requests.StudentRequestDto;
+import com.school.schoolstat.models.dto.responses.Etat1ResponseDto;
+import com.school.schoolstat.models.dto.responses.Etat2ResponseDto;
+import com.school.schoolstat.models.dto.responses.Etat3ResponseDto;
 import com.school.schoolstat.models.dto.responses.StudentResponseDto;
 import com.school.schoolstat.models.entities.Student;
 import com.school.schoolstat.services.interfaces.StudentService;
@@ -9,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -62,5 +66,45 @@ public class StudentController {
     public ResponseEntity<?> delete(@PathVariable("id") Student id){
         studentService.deleteStudent(id);
         return ResponseEntity.ok("deleted successful");
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<?> count(){
+        Long total = studentService.count();
+        return ResponseEntity.ok(total);
+    }
+
+    @GetMapping("/count/")
+    public ResponseEntity<?> countStudentBySubCenter(
+        @RequestParam(name = "sub-center", defaultValue = "7") /*Long subCenter,
+        @RequestParam(name = "sex") String sex*/ Long subCenter, String sex
+    ){
+        List<Etat1ResponseDto> etat1 = studentService.count(subCenter, sex);
+
+        return ResponseEntity.ok(etat1);
+    }
+
+    @GetMapping("/state1/")
+    public ResponseEntity<?> countStudentBySubCenters(
+       /* @RequestParam(name = "sub-center") Long subCenter,
+        @RequestParam(name = "sex") String sex*/ Long subCenter, String sex
+    ){
+        List<Etat1ResponseDto> etat1 = studentService.countState1();
+
+        return ResponseEntity.ok(etat1);
+    }
+
+    @GetMapping("/state2/")
+    public ResponseEntity<?> countStudentBySubCenters2(){
+        List<Etat2ResponseDto> etat1 = studentService.countState2();
+
+        return ResponseEntity.ok(etat1);
+    }
+
+    @GetMapping("/state3/")
+    public ResponseEntity<?> countStudentByOrder(){
+        List<Etat3ResponseDto> etat1 = studentService.countState3();
+
+        return ResponseEntity.ok(etat1);
     }
 }

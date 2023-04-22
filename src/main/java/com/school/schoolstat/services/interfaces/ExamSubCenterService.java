@@ -16,4 +16,5 @@ public interface ExamSubCenterService {
 
     public void deleteExamSubCenter(ExamSubCenter examSubCenter);
 
+    Long count();
 }
