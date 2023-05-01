@@ -2,8 +2,10 @@ package com.school.schoolstat.models.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "t_user")
@@ -13,21 +15,31 @@ import java.io.Serializable;
 @ToString
 @EqualsAndHashCode
 public class User implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id @GeneratedValue(generator="system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
+    private String id;
 
-    @Column(nullable = false)
+    private String profile;
+
     private String firstname;
 
     private String lastname;
 
-    @Column(unique = true)
-    private String email;
+    private Date bornAt;
 
-    @Column(unique = true)
-    private String phone;
+    private String gender;
 
-    @Column(nullable = false)
-    private String password;
+    private String idCartRecto;
+
+    private String idCartVerso;
+
+    private String profession;
+
+    private String country;
+
+    private String city;
+
+    @OneToOne
+    @JoinColumn(name = "account_id", nullable = true)
+    private Account account;
 }

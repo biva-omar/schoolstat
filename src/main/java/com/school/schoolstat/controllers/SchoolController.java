@@ -1,6 +1,7 @@
 package com.school.schoolstat.controllers;
 
 import com.school.schoolstat.models.dto.requests.SchoolRequestDto;
+import com.school.schoolstat.models.dto.responses.GraphResponseDto;
 import com.school.schoolstat.models.dto.responses.SchoolResponseDto;
 import com.school.schoolstat.models.entities.Note;
 import com.school.schoolstat.models.entities.School;
@@ -70,5 +71,12 @@ public class SchoolController {
     public ResponseEntity<?> count(){
         Long total = schoolService.countSchool();
         return ResponseEntity.ok(total);
+    }
+
+    @GetMapping("/count-by-sub-centers")
+    public ResponseEntity<?> countStudentsBySchools(){
+        List<GraphResponseDto> data = schoolService.countSchoolsBySubCenters();
+
+        return ResponseEntity.ok(data);
     }
 }

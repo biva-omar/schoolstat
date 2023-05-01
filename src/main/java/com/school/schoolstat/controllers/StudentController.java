@@ -1,10 +1,7 @@
 package com.school.schoolstat.controllers;
 
 import com.school.schoolstat.models.dto.requests.StudentRequestDto;
-import com.school.schoolstat.models.dto.responses.Etat1ResponseDto;
-import com.school.schoolstat.models.dto.responses.Etat2ResponseDto;
-import com.school.schoolstat.models.dto.responses.Etat3ResponseDto;
-import com.school.schoolstat.models.dto.responses.StudentResponseDto;
+import com.school.schoolstat.models.dto.responses.*;
 import com.school.schoolstat.models.entities.Student;
 import com.school.schoolstat.services.interfaces.StudentService;
 import org.modelmapper.ModelMapper;
@@ -74,16 +71,6 @@ public class StudentController {
         return ResponseEntity.ok(total);
     }
 
-    @GetMapping("/count/")
-    public ResponseEntity<?> countStudentBySubCenter(
-        @RequestParam(name = "sub-center", defaultValue = "7") /*Long subCenter,
-        @RequestParam(name = "sex") String sex*/ Long subCenter, String sex
-    ){
-        List<Etat1ResponseDto> etat1 = studentService.count(subCenter, sex);
-
-        return ResponseEntity.ok(etat1);
-    }
-
     @GetMapping("/state1/")
     public ResponseEntity<?> countStudentBySubCenters(
        /* @RequestParam(name = "sub-center") Long subCenter,
@@ -106,5 +93,19 @@ public class StudentController {
         List<Etat3ResponseDto> etat1 = studentService.countState3();
 
         return ResponseEntity.ok(etat1);
+    }
+
+    @GetMapping("/count-by-sub-centers")
+    public ResponseEntity<?> countStudentsBySubCenters(){
+        List<GraphResponseDto> data = studentService.countStudentsBySubCenters();
+
+        return ResponseEntity.ok(data);
+    }
+
+    @GetMapping("/count-by-schools")
+    public ResponseEntity<?> countStudentsBySchools(){
+        List<GraphResponseDto> data = studentService.countStudentsBySchools();
+
+        return ResponseEntity.ok(data);
     }
 }

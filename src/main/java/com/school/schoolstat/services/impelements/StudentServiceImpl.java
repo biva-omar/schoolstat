@@ -4,6 +4,7 @@ import com.school.schoolstat.dao.StudentRepository;
 import com.school.schoolstat.models.dto.responses.Etat1ResponseDto;
 import com.school.schoolstat.models.dto.responses.Etat2ResponseDto;
 import com.school.schoolstat.models.dto.responses.Etat3ResponseDto;
+import com.school.schoolstat.models.dto.responses.GraphResponseDto;
 import com.school.schoolstat.models.entities.Student;
 import com.school.schoolstat.services.interfaces.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,4 +73,15 @@ public class StudentServiceImpl implements StudentService {
     public List<Etat3ResponseDto> countState3() {
         return studentRepository.findByTeachingOrders();
     }
+
+    @Override
+    public List<GraphResponseDto> countStudentsBySubCenters() {
+        return studentRepository.countBySubCenters();
+    }
+
+    @Override
+    public List<GraphResponseDto> countStudentsBySchools() {
+        return studentRepository.countBySchools();
+    }
+
 }

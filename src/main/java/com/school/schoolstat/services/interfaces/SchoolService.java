@@ -1,5 +1,6 @@
 package com.school.schoolstat.services.interfaces;
 
+import com.school.schoolstat.models.dto.responses.GraphResponseDto;
 import com.school.schoolstat.models.entities.ExamCenter;
 import com.school.schoolstat.models.entities.School;
 
@@ -17,4 +18,7 @@ public interface SchoolService {
     public void deleteSchool(School school);
 
     Long countSchool();
+
+
+    List<GraphResponseDto> countSchoolsBySubCenters();
 }

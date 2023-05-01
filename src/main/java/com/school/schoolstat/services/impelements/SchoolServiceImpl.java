@@ -1,6 +1,7 @@
 package com.school.schoolstat.services.impelements;
 
 import com.school.schoolstat.dao.SchoolRepository;
+import com.school.schoolstat.models.dto.responses.GraphResponseDto;
 import com.school.schoolstat.models.entities.School;
 import com.school.schoolstat.services.interfaces.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +47,10 @@ public class SchoolServiceImpl implements SchoolService {
     @Override
     public Long countSchool() {
         return schoolRepository.count();
+    }
+
+    @Override
+    public List<GraphResponseDto> countSchoolsBySubCenters() {
+        return schoolRepository.countBySubCenters();
     }
 }

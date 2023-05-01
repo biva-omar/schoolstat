@@ -5,7 +5,11 @@ public enum TeachingOrder {
     PRIVE_LAIC(2),
     PRIVE_CATHOLIQUE(3),
     PRIVE_FRANCO_ARABE(4),
-    PRIVE_PROTESTANT(5);
+    PRIVE_PROTESTANT(5),
+
+    LENGTH(5);
+
+    
 
     private final int value;
 

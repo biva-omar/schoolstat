@@ -3,6 +3,7 @@ package com.school.schoolstat.dao;
 import com.school.schoolstat.models.dto.responses.Etat1ResponseDto;
 import com.school.schoolstat.models.dto.responses.Etat2ResponseDto;
 import com.school.schoolstat.models.dto.responses.Etat3ResponseDto;
+import com.school.schoolstat.models.dto.responses.GraphResponseDto;
 import com.school.schoolstat.models.entities.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -69,5 +70,27 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
             "join ExamSubCenter esc on sc.examSubCenter=esc.id " +
             " group by sc.teachingOrder")
     List<Etat3ResponseDto> findByTeachingOrders();
+
+
+    /***
+     * get students count by teaching order
+     */
+    @Query("select new com.school.schoolstat.models.dto.responses.GraphResponseDto(" +
+            "esc.label, " +
+            "count(s.firstname))" +
+            " from Student s join School sc on s.school=sc.id  " +
+            "join ExamSubCenter esc on sc.examSubCenter=esc.id " +
+            " group by esc.label")
+    List<GraphResponseDto> countBySubCenters();
+
+    /***
+     * get students count by schools
+     */
+    @Query("select new com.school.schoolstat.models.dto.responses.GraphResponseDto(" +
+            "sc.label, " +
+            "count(s.firstname))" +
+            " from Student s join School sc on s.school=sc.id  " +
+            " group by sc.label")
+    List<GraphResponseDto> countBySchools();
 
 }
