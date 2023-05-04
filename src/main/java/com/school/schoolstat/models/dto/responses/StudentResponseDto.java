@@ -13,5 +13,5 @@ public class StudentResponseDto implements Serializable {
     private Date birthday;
     private String sex;
     private String tutorPhone;
-    private Long schoolId;
+    private String schoolLabel;
 }

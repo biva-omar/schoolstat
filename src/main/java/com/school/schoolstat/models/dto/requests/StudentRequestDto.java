@@ -10,6 +10,7 @@ public class StudentRequestDto implements Serializable {
     private String firstname;
     private String lastname;
     private Date birthday;
+    private String birthplace;
     private String sex;
     private String tutorPhone;
     private Long schoolId;

@@ -25,6 +25,9 @@ public class Student implements Serializable {
 
     private Date birthday;
 
+    @Column(name = "c_birth_place")
+    private String birthplace;
+
     private String sex;
 
     private String tutorPhone;
